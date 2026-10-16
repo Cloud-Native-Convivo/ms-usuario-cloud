@@ -28,3 +28,22 @@ from app.repository.usuario_repository import UsuarioRepository
 @pytest.fixture
 def mock_usuario_repo():
     return AsyncMock(spec=UsuarioRepository)
+
+
+from app.service.usuario_service import UsuarioService
+
+
+@pytest.fixture
+def mock_usuario_service():
+    return AsyncMock(spec=UsuarioService)
+
+
+from app.api.usuario_router import get_usuario_service
+
+
+@pytest.fixture
+def client_usuario(mock_usuario_service):
+    app.dependency_overrides[get_usuario_service] = lambda: mock_usuario_service
+    with TestClient(app) as test_client:
+        yield test_client
+    app.dependency_overrides.clear()
