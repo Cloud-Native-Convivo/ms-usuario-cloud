@@ -20,3 +20,11 @@ def mock_session():
 def client():
     with TestClient(app) as test_client:
         yield test_client
+
+
+from app.repository.usuario_repository import UsuarioRepository
+
+
+@pytest.fixture
+def mock_usuario_repo():
+    return AsyncMock(spec=UsuarioRepository)
