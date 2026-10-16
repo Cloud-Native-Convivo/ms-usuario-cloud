@@ -12,7 +12,8 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-import app.model.usuario  # noqa: necesario para que Base.metadata conozca la tabla en autogenerate
+import app.model.usuario
+import app.model.usuario_condominio_rol  # noqa: necesario para que Base.metadata conozca la tabla en autogenerate
 from app.config.database import Base
 from app.config.settings import settings
 
