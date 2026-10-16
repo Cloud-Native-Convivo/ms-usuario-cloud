@@ -1,4 +1,13 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Identity, Index, Integer, String, UniqueConstraint
+from sqlalchemy import (
+    Boolean,
+    Column,
+    ForeignKey,
+    Identity,
+    Index,
+    Integer,
+    String,
+    UniqueConstraint,
+)
 
 from app.config.database import Base
 
