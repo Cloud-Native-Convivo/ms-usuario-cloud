@@ -18,9 +18,12 @@ class UsuarioCondominioRol(Base):
         Index("ix_ucr_usuario_id", "usuario_id"),
         Index("ix_ucr_condominio_id", "condominio_id"),
         # unidad_id puede ser NULL (ej. administrador de todo el condominio, no de una
-        # unidad especifica) -- UniqueConstraint trata NULLs como distintos en Oracle,
-        # asi que dos filas con unidad_id=NULL para el mismo (usuario,condominio,rol)
-        # NO colisionan por si solas; es un caso valido, no un bug (ver Review Focus #3).
+        # unidad especifica). En Oracle, un UniqueConstraint compuesto solo deja pasar
+        # duplicados cuando TODAS sus columnas son NULL -- con una sola columna NULL
+        # (unidad_id) y el resto igual, dos filas SI colisionan (ORA-00001). Es el
+        # comportamiento deseado: evita duplicar el mismo rol "de todo el condominio"
+        # para el mismo usuario. Riesgo conocido, no ejercitado por repositorio/servicio
+        # en esta fase -- ver "Riesgos conocidos y alcance explicitamente diferido" del plan.
         UniqueConstraint("usuario_id", "condominio_id", "unidad_id", "rol", name="uq_ucr_asociacion"),
     )
 
