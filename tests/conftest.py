@@ -1,0 +1,22 @@
+import os
+
+os.environ.setdefault("DB_PASSWORD", "test")
+
+from unittest.mock import AsyncMock  # noqa: E402
+
+import pytest  # noqa: E402
+from fastapi.testclient import TestClient  # noqa: E402
+from sqlalchemy.ext.asyncio import AsyncSession  # noqa: E402
+
+from app.main import app  # noqa: E402
+
+
+@pytest.fixture
+def mock_session():
+    return AsyncMock(spec=AsyncSession)
+
+
+@pytest.fixture
+def client():
+    with TestClient(app) as test_client:
+        yield test_client
