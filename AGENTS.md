@@ -465,7 +465,7 @@ Si otra herramienta requiere su propio archivo de reglas (`CLAUDE.md`, `.cursorr
 - **Nota para Windows**: Crear symlinks requiere modo desarrollador (*Developer Mode*) o consola elevada con privilegios de administrador. Como alternativa libre de permisos especiales, usar hardlinks (`mklink /H CLAUDE.md AGENTS.md`) o un script de sincronización en hook de pre-commit.
 
 **Optimización de huella de contexto y tokens:**
-En repositorios activos o equipos con flujos iterativos rápidos donde el límite de contexto del LLM sea prioritario, la sección de normativas (§17) puede desacoplarse a un archivo dedicado (ej. `docs/compliance/NORMATIVA.md`), conservando en este `AGENTS.md` raíz únicamente los punteros y las reglas operativas inmediatas. Esto reduce el costo base de contexto a <250 líneas.
+En repositorios activos o equipos con flujos iterativos rápidos donde el límite de contexto del LLM sea prioritario, la sección de normativas (§17) puede desacoplarse a un archivo dedicado (ej. `NORMATIVA.md` en una carpeta de cumplimiento del propio repositorio), conservando en este `AGENTS.md` raíz únicamente los punteros y las reglas operativas inmediatas. Esto reduce el costo base de contexto a <250 líneas.
 
 La normativa declarada en §17 entra en la misma cadencia de revisión: si cambia el alcance del proyecto (empieza a tratar datos personales, pasa a ser sistema público, se certifica), revisar §17 en esa misma pasada — no al momento de la auditoría.
 
