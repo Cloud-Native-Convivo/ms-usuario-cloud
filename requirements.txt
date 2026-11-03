@@ -5,4 +5,4 @@ oracledb>=2.5
 alembic>=1.13
 pydantic>=2.14.1
 pydantic-settings>=2.16.1
-py-eureka-client>=0.11
+py-eureka-client>=0.13.3
