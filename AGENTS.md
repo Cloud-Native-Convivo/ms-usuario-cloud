@@ -34,7 +34,8 @@ Microservicio de gestión de usuarios, identidades y roles en condominios (proye
 - Framework: FastAPI 0.115+, SQLAlchemy 2.0 (async), oracledb 2.5+, Alembic 1.13+, Pydantic 2.9+, Uvicorn 0.34+
 - Gestor de paquetes: pip / venv
 - Base de datos: Oracle Database (`oracle+oracledb_async`)
-- Registro / Service Discovery: Netflix Eureka (`py-eureka-client`)
+- Registro / Service Discovery: Netflix Eureka (`py-eureka-client`); se registra en el `lifespan` de `app/main.py` si hay `EUREKA_URL`
+- Configuración remota: `cargar_configuracion_remota` (`app/config/settings.py`) completa solo variables de entorno ausentes con `ms-usuario-cloud.yml` de config-server (`CONFIG_SERVER_URL`); el password de DB y los valores con `${...}` nunca se toman de ahí
 
 ## 3. Estructura del proyecto (opcional — útil si el layout no es obvio)
 
