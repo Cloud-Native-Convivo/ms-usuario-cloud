@@ -1,7 +1,7 @@
 # ============================================
 # Etapa 1: Descargar dependencias (cache)
 # ============================================
-FROM python:3.12-slim AS deps
+FROM python:3.15-slim AS deps
 WORKDIR /app
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # ============================================
 # Etapa 2: Imagen final liviana
 # ============================================
-FROM python:3.12-slim
+FROM python:3.15-slim
 RUN apt-get update && \
     (apt-get install -y --no-install-recommends curl libaio1 || apt-get install -y --no-install-recommends curl libaio1t64) && \
     rm -rf /var/lib/apt/lists/*
